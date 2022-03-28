@@ -23,6 +23,7 @@ const Grid = () => {
   const [speed, setSpeed] = useState(100);
   const [paused, setPaused] = useState(true);
   const [mouseDown, setMouseDown] = useState(false);
+  const [rightMouseDown, setRightMouseDown] = useState(false);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -43,6 +44,9 @@ const Grid = () => {
     const handleDocumentMouseUp = (event: any) => {
       if (event.button !== 2) {
         setTimeout(() => setMouseDown(false), 10);
+      } else if (event.button === 2) {
+        setTimeout(() => setMouseDown(false), 10);
+        setTimeout(() => setRightMouseDown(false), 10);
       }
     };
 
@@ -54,6 +58,10 @@ const Grid = () => {
 
   const handleNodeClick = () => {
     setMouseDown(true);
+  };
+
+  const handleNodeRightClick = () => {
+    setRightMouseDown(true);
   };
 
   const counterNeighbors = (
@@ -137,6 +145,7 @@ const Grid = () => {
               onChange={(val) => {
                 setSpeed(410 - val);
               }}
+              size="lg"
             />
           </Stack>
           <Group grow>
@@ -169,6 +178,8 @@ const Grid = () => {
                     reset={resetNode}
                     key={`${n} ${j}`}
                     mouseDown={mouseDown}
+                    rightMouseDown={rightMouseDown}
+                    handleRightClick={handleNodeRightClick}
                     handleClick={handleNodeClick}
                   />
                 );

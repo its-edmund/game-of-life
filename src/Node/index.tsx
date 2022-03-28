@@ -8,7 +8,9 @@ type NodeProps = {
   set: (r: number, c: number) => void;
   reset: (r: number, c: number) => void;
   mouseDown: boolean;
+  rightMouseDown: boolean;
   handleClick: () => void;
+  handleRightClick: () => void;
 };
 
 const Node = ({
@@ -18,17 +20,26 @@ const Node = ({
   set,
   reset,
   mouseDown,
+  rightMouseDown,
   handleClick,
+  handleRightClick,
 }: NodeProps) => {
   return (
     <div
       className={`node ${kill && "alive"}`}
+      onContextMenu={(e) => {
+        e.preventDefault();
+        reset(r, c);
+        handleRightClick();
+      }}
       onMouseDown={() => {
         set(r, c);
         handleClick();
       }}
       onMouseEnter={() => {
-        if (mouseDown) {
+        if (rightMouseDown) {
+          reset(r, c);
+        } else if (mouseDown) {
           set(r, c);
         }
       }}
