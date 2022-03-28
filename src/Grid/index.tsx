@@ -7,6 +7,7 @@ import {
   Space,
   Stack,
   Text,
+  Title,
 } from "@mantine/core";
 import React, { useEffect, useState } from "react";
 import Node from "../Node";
@@ -125,9 +126,10 @@ const Grid = () => {
   return (
     <div>
       <Container>
+        <Title className="title">Game of Life</Title>
         <Stack mb="md">
           <Stack spacing="sm">
-            <Text>Speed: </Text>
+            <Text style={{ color: "#424242" }}>Speed: </Text>
             <Slider
               min={10}
               max={400}

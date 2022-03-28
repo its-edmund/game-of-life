@@ -3,3 +3,10 @@
   flex-direction: row;
   width: 100%;
 }
+
+.title {
+  font-size: 72px;
+  background: linear-gradient(to right, #347aeb, #34ebc0, #34ebc0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
