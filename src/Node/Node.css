@@ -1,0 +1,18 @@
+.node {
+  width: 20px;
+  background-color: white;
+  border: 1px #424242 solid;
+  margin-top: -1px;
+  margin-left: -1px;
+
+  transition: all 0.05s ease-in-out;
+  aspect-ratio: 1 / 1;
+}
+
+.alive {
+  background-color: #ffb8ee;
+}
+
+.node:hover {
+  transform: scale(110%);
+}
